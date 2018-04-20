@@ -33,7 +33,7 @@
 				Ex: TFxIDF - feature weighting used in text classification
 			- highly correlated feature discarding
 				Ex: ChiSquare - filtering of highly correlated features
-			- creation of synthetic features derivative of the one observed in the data
+			- creation of synthetic features derivative of the one sobserved in the data
 				Ex: Kernel Trick
 			- reduction of high dimensional features into lower ones
 				Ex: Hashing, PCA
@@ -438,7 +438,7 @@
 		# do the TFxIDF in a distributed fashion
 		tfidf = idf.transform(tf)
 
-30. What is 'feautures hashing'? Why is it useful for Big Data?
+30. What is 'features hashing'? Why is it useful for Big Data?
 	
 	If the space of features is high dimensional, one way to reduce dimensionality is via hashing. 
 	
@@ -454,9 +454,9 @@
 	
 	If a feature assumes continuous values then it could be convenient to discretize it via hashing or binning. This intuition is very simple: The space of continuous values is divided into buckets, in which the first ones are hashed. 
 
-32. What is an L^P normalization?
+32. What is an L^N normalization?
 	
-	Features might be transformed in such a way that they have unit norm L^P, where L^P can be either norm-1, norm-2, norm-infinity
+	Features might be transformed in such a way that they have unit norm L^N, where L^N can be either norm-1, norm-2, norm-infinity
 	Code:
 		from pyspark.mllib.util import MLUtils
 		from pyspark.mllib.linalg import Vectors
@@ -485,7 +485,7 @@
 	
 	Mutual information computes how much two features have in common, using the formula for information entropy
 
-35. What is a loss function, what are linear models, and what do we mean by regularization paramters in ML?
+35. What is a loss function, what are linear models, and what do we mean by regularization parameters in ML?
 	
 	A loss function maps a set of observed events represented by one or more variables onto a real number, which represents the associated 'cost'. 
 	ML frequently deals with modeling the observed data by minimizing the costs of a suitable loss function. 
@@ -522,7 +522,7 @@
 	The function looks like an S on the graph.
 	Basically, the sigmoid function makes it easy to map real values into probabilities
 
-	A logistic function is a particular type of sigmoid functino used in linear regression. 
+	A logistic function is a particular type of sigmoid function used in linear regression. 
 	Code:	
 		from scipy.special import expit # expit is the logistic function, the inverse of the logit func. x parameter is an array
 		expit(0.467)
@@ -678,7 +678,7 @@
 45. What is a Naive Bayes Classifier?
 	
 	A machine learning methodology which assigns class labels to each instance of real application data. The 'naive' attribute is related to the assumption that each feature provides a probabilistic contribution to the learned model, which is independent from features. 
-
+	
 	For instance, a text article can be assigned to the category 'sports' because it contains the word 'first', independently from the fact that it contains the word 'base'. There words are considered separately but not in correlation. Despite their naive scheme and apparently simplified assumptions, naive Bayes classifiers have worked quite well in many difficult and practical solutions. 
 
 	Mathematically the problem can be formulated by considering an instance observation characterized by means of a suitable vector n of features X = X1 + ... + Xn. Where the goal is to assign the best class probability Ck (C1 + ... Cj) conditioned to the observation of X. This is statistically described as Prob(Ck | X). Bayes Theorem allows us to estimate this probability as Prob(Ck | X) = (Prob(Ck)*Prob(X | Ck))/Prob(X)
@@ -885,3 +885,6 @@
 
 	K-Means++ is a variant where the initial K Clusters are spread out: The first cluster center is chosen uniformly at random from the application data points, after which each successive cluster center is chosen from the remaining data points, with a probability that is proportional to its squared distance from the closest existing cluster center point. 
 
+57. What is the exploitation/exploration dilemma?
+
+	making sure your algorithm predicts based on previous events/history (exploitation) and tries new stuff (exploration)
